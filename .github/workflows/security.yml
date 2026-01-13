@@ -8,6 +8,10 @@ on:
   # Permet de lancer manuellement
   workflow_dispatch:
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   # ===========================================
   # JOB 1 : Générer le SBOM
@@ -133,4 +137,3 @@ jobs:
           echo "| SBOM Generation | ${{ needs.sbom.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Grype Scan | ${{ needs.grype-scan.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Trivy Scan | ${{ needs.trivy-scan.result }} |" >> $GITHUB_STEP_SUMMARY
-
